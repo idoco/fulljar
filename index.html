@@ -12,7 +12,7 @@
 
     <style>
         #overlay {
-            position: fixed;
+            position: absolute;
             display: none;
             width: 100%;
             height: 100%;
@@ -23,16 +23,13 @@
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 1000;
         }
-
     </style>
 
 </head>
 
-<body>
+<body style="position: relative">
 
-    <div id="overlay">
-        <canvas id="canvas"></canvas>
-    </div>
+    <div id="overlay"></div>
 
     <div style="width: 60%; margin: auto; text-align: center;">
         <div>
@@ -147,20 +144,19 @@
 
         </div>
     </div>
-    
+
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.245.1.min.js"></script>
     <script src="warmjar.js"></script>
 
     <!-- Heatmap overlay -->
 
-    <button 
-        style="position: fixed; bottom: 20px; right: 20px; z-index: 1010;" 
-        class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect"
+    <button style="position: fixed; bottom: 20px; right: 20px; z-index: 1010;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect"
         onclick="getHeatmap()">
         🔥
     </button>
 
     <script src="http://mourner.github.io/simpleheat/simpleheat.js"></script>
+    <script src="http://mourner.github.io/simpleheat/demo/data.js"></script>
 
     <script>
         var toggle = true;
@@ -173,7 +169,14 @@
             toggle = !toggle;
         }
 
-    var heat = simpleheat('canvas').data([[1,1,2],[100,100,8],[150,150,3]]).max(18).draw();
+        // add heatmap canvas with the same dimensions as the page body 
+        let canvas = document.createElement('canvas');
+        canvas.setAttribute("id","canvas");
+        canvas.setAttribute("width",document.body.offsetWidth);
+        canvas.setAttribute("height",document.body.offsetHeight);
+        document.getElementById("overlay").appendChild(canvas);
+
+        var heat = simpleheat('canvas').data(data).max(18).draw();
 
     </script>
 
