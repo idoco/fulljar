@@ -34,16 +34,15 @@ AWS.config.credentials.get(function(err) {
             // normalizedX 0 is the center of the viewport
             var normalizedX = event.offsetX - Math.round(viewWidth / 2);
             
-            console.log(normalizedX, event.offsetY, viewWidth);
+            console.log(normalizedX, event.offsetY);
  
              // Create the Amazon Kinesis record
              var record = {
                  Data: JSON.stringify({
                      page: window.location.href,
                      x: normalizedX,
-                     y: event.offsetY,
-                     time: new Date()
-                 })};
+                     y: event.offsetY
+                 }) + "\n"};
              recordData.push(record);
          }, 100);
      });
