@@ -6,7 +6,6 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 
 AWS.config.region = 'us-east-1';
             
-// We're going to partition Amazon Kinesis records based on an identity.
 // We need to get credentials first, then attach our event listeners.
 AWS.config.credentials.get(function(err) {
     // attach event listener
@@ -28,10 +27,10 @@ AWS.config.credentials.get(function(err) {
 
     document.addEventListener('mousemove', function(event) {
          clearTimeout(TID);
-         // Prevent creating a record while a user is actively scrolling
+         // Prevent creating a record while a user is actively moving
          TID = setTimeout(function() {
 
-            // normalizedX 0 is the center of the viewport
+            // normalizedX 0 is the center of the view
             var normalizedX = event.offsetX - Math.round(viewWidth / 2);
             
             console.log(normalizedX, event.offsetY);

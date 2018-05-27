@@ -2,12 +2,20 @@
 <html>
 
 <head>
-    <title>AWS SDK for JavaScript - Amazon Kinesis Application</title>
+    <title>Warmjar</title>
+    <meta charset="UTF-8">
+
+    <link rel="icon" href="favicon.ico?v=1" />
+
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
 </head>
 
 <body>
     <div style="width: 60%; margin: auto; text-align: center;">
         <div>
+            
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nulla eget nisl bibendum feugiat. Fusce rhoncus
                 felis at ultricies luctus. Vivamus fermentum cursus sem at interdum. Proin vel lobortis nulla. Aenean rutrum
@@ -115,12 +123,29 @@
                 sem placerat. Duis ut metus egestas, ullamcorper neque et, accumsan quam. Class aptent taciti sociosqu ad
                 litora torquent per conubia nostra, per inceptos himenaeos.
             </p>
+
+            <button 
+                style="position: fixed; bottom: 20px; right: 20px"
+                class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect"
+                onclick="getHeatmap()"
+                >
+                🔥
+            </button>
 
             <!-- Additional paragraphs in the blog page appear here -->
         </div>
     </div>
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.245.1.min.js"></script>
-    <script src="kinesis-example.js"></script>
+    <script src="warmjar.js"></script>
+
+    <script>
+    
+    function getHeatmap() {
+        alert("getHeatmap");
+    }
+
+    </script>
+
 </body>
 
 </html>
